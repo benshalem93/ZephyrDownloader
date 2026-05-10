@@ -1,22 +1,22 @@
-FROM ubuntu:18.04
+FROM ubuntu:24.04
 
-RUN apt update 
+RUN apt-get update 
 
-RUN apt -y install \
+RUN apt-get -y install \
 python3-pip \
 python3-packaging \
 git \
 pv
 
-RUN pip3 install --upgrade pip
-RUN pip3 install requests
+#RUN pip3 install --break-system-packages --upgrade pip
+RUN pip3 install --break-system-packages requests
 
-RUN pip install west
-
+RUN pip install --break-system-packages west
+RUN pip install --break-system-packages jsonschema
 RUN mkdir /scripts
 
 VOLUME /artifacts
 
 COPY  download_zephyr.sh /scripts/download_zephyr.sh
 
-CMD /scripts/download_zephyr.sh
+CMD ["/scripts/download_zephyr.sh"]

@@ -10,6 +10,7 @@ pv
 
 #RUN pip3 install --break-system-packages --upgrade pip
 
+
 RUN pip install --break-system-packages west
 
 RUN mkdir /scripts
@@ -18,4 +19,4 @@ VOLUME /artifacts
 
 COPY  download.sh /scripts/download.sh
 
-CMD /scripts/download.sh 2404
+CMD ["/scripts/download.sh", "2404"]
